@@ -20,7 +20,7 @@ public class test {
         Comparator<Object> compuesto = new OrdenarCompuesto(apellido,nombre);
         Comparator<Object> compuesto1 = new OrdenarCompuesto(compuesto,dni);
 
-        ListaEnlazada lista = new ListaEnlazada(compuesto);
+        ListaEnlazada lista = new ListaEnlazada(compuesto1);
    
         lista.addNodo(alumno1);
         lista.addNodo(alumno2);
