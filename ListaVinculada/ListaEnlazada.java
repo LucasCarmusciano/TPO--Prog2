@@ -12,7 +12,6 @@ public class ListaEnlazada implements Iterable<Nodo>{
 
     public ListaEnlazada(Comparator<Object> comparador) {
         this.cabeza = null;
-        this.fin=null;
         this.size = 0;
         this.comparador = comparador;
     }
@@ -21,12 +20,11 @@ public class ListaEnlazada implements Iterable<Nodo>{
         return cabeza;
     }
     
-    public void addNodo(Object o){ //para prboar
+    public void addNodo(Object o){
     	Nodo temp;
 		if(estaVacia()) {
 			temp = new Nodo(o);
 			this.cabeza = temp;
-			this.fin = temp;
 		}
 		else {
 			temp = new Nodo(o);
@@ -38,8 +36,9 @@ public class ListaEnlazada implements Iterable<Nodo>{
     }
 
 	public boolean estaVacia() { 
-		if(cabeza==null)
+		if(this.cabeza==null){
 			return true;
+        }
 		return false;
 	}
     
