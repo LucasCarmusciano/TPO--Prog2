@@ -1,4 +1,4 @@
-package principal;
+package ListaVinculada;
 import java.util.ArrayList;
 
 public class Alumno {

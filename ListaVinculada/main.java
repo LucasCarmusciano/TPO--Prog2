@@ -1,14 +1,8 @@
-package principal;
-
-import comparadores.ComparadorInt;
-import comparadores.ComparadorString;
-import comparadores.OrdenarCompuesto;
-import comparadores.OrdenarDNI;
-import comparadores.OrdenarPorApellido;
-import comparadores.OrdenarPorNombre;
-
+package ListaVinculada;
 import java.util.Comparator;
-import java.util.Iterator;
+
+import ListaVinculada.Comparadores.*;
+
 
 public class Main {
 	
