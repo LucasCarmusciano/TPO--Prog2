@@ -42,25 +42,6 @@ public class ListaEnlazada implements Iterable<Nodo>{
 			return true;
 		return false;
 	}
-
-    // private void ordenar(){
-    //     Nodo aux = this.cabeza;
-    //     Nodo actual;
-    //     Object temp;
-    //     while(aux.getSiguiente()!=null){
-    //         actual = aux.getSiguiente();
-    //         while(actual!=null){
-    //             if((aux.getElemento())>(actual.getElemento())){
-    //                 temp = aux.getElemento();
-    //                 aux.getElemento() = actual.getElemento();
-    //                 actual.getElemento() = temp;
-    //             }
-    //             actual = actual.getSiguiente();
-    //         }
-    //         aux.getSiguiente();
-    //     }
-    // }
-
     
     public int size(){
         return this.size;
@@ -120,8 +101,6 @@ public class ListaEnlazada implements Iterable<Nodo>{
         while(aux.getSiguiente()!=null){
             actual = aux.getSiguiente();
             while(actual!=null){
-
-
                 if((this.comparador.compare(aux.getElemento(), actual.getElemento()))>=0){
                     temp = aux.getElemento();
                     aux.setElemento(actual.getElemento());
