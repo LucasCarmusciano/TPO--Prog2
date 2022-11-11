@@ -1,16 +1,19 @@
-package ListaVinculada;
-
+package principal;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class ListaEnlazada implements Iterable<Nodo>{
-    private Nodo cabeza;
-    private int size;
-    private Comparator<Object> comparador;
 
-    public ListaEnlazada(Nodo cabeza, Comparator<Object> comparador) {
-        this.cabeza = cabeza;
-        this.size = 1;
+public class ListaEnlazada implements Iterable<Nodo>{
+
+	private Nodo cabeza;
+	private Nodo fin;
+    	private int size;
+    	private Comparator<Object> comparador;
+
+    public ListaEnlazada(Comparator<Object> comparador) {
+        this.cabeza = null;
+        this.fin=null;
+        this.size = 0;
         this.comparador = comparador;
     }
 
@@ -18,36 +21,45 @@ public class ListaEnlazada implements Iterable<Nodo>{
         return cabeza;
     }
     
-    public void addNodo(Object o){
-        Nodo nuevoNodo = new Nodo(o);
-        nuevoNodo.setSiguiente(this.cabeza);
-        this.cabeza = nuevoNodo;
-        this.ordenar();
-        this.size++;
+    public void addNodo(Object o){ //para prboar
+    	Nodo temp;
+		if(estaVacia()) {
+			temp = new Nodo(o);
+			this.cabeza = temp;
+			this.fin = temp;
+		}
+		else {
+			temp = new Nodo(o);
+			this.fin.setSiguiente(temp);
+			fin = temp;
+			this.ordenar();
+		}
+		this.size++;
     }
 
-    public void setComparador(Comparator<Object> comparador){
-        this.comparador = comparador;
-    }
-    
+	public boolean estaVacia() { 
+		if(cabeza==null)
+			return true;
+		return false;
+	}
 
-    private void ordenar(){
-        Nodo aux = this.cabeza;
-        Nodo actual;
-        Object temp;
-        while(aux.getSiguiente()!=null){
-            actual = aux.getSiguiente();
-            while(actual!=null){
-                if((this.comparador.compare(aux.getElemento(), actual.getElemento()))>=0){
-                    temp = aux.getElemento();
-                    aux.setElemento(actual.getElemento());
-                    actual.setElemento(temp);
-                }
-                actual = actual.getSiguiente();
-            }
-            aux = aux.getSiguiente();
-        }
-    }
+    // private void ordenar(){
+    //     Nodo aux = this.cabeza;
+    //     Nodo actual;
+    //     Object temp;
+    //     while(aux.getSiguiente()!=null){
+    //         actual = aux.getSiguiente();
+    //         while(actual!=null){
+    //             if((aux.getElemento())>(actual.getElemento())){
+    //                 temp = aux.getElemento();
+    //                 aux.getElemento() = actual.getElemento();
+    //                 actual.getElemento() = temp;
+    //             }
+    //             actual = actual.getSiguiente();
+    //         }
+    //         aux.getSiguiente();
+    //     }
+    // }
 
     
     public int size(){
@@ -97,6 +109,30 @@ public class ListaEnlazada implements Iterable<Nodo>{
         return i;
     }
     
+    public void setComparador(Comparator<Object> comparador){
+        this.comparador = comparador;
+    }
+    
+    private void ordenar(){
+        Nodo aux = this.cabeza;
+        Nodo actual;
+        Object temp;
+        while(aux.getSiguiente()!=null){
+            actual = aux.getSiguiente();
+            while(actual!=null){
+
+
+                if((this.comparador.compare(aux.getElemento(), actual.getElemento()))>=0){
+                    temp = aux.getElemento();
+                    aux.setElemento(actual.getElemento());
+                    actual.setElemento(temp);
+                }
+                actual = actual.getSiguiente();
+            }
+            aux = aux.getSiguiente();
+        }
+    }
+    
     public void imprimir(){
         Nodo aux = this.cabeza;
         System.out.println(aux.getElemento());
@@ -114,6 +150,7 @@ public class ListaEnlazada implements Iterable<Nodo>{
 
     private class Iterador implements Iterator<Nodo>{
         private Nodo pos;
+        
         public Iterador(){
             this.pos = new Nodo(null);
             this.pos.setSiguiente(cabeza);
@@ -129,5 +166,5 @@ public class ListaEnlazada implements Iterable<Nodo>{
             pos = pos.getSiguiente();
             return pos;
         }
-    }
+}
 }

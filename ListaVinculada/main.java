@@ -1,44 +1,70 @@
-package ListaVinculada;
+package principal;
+
+import comparadores.ComparadorInt;
+import comparadores.ComparadorString;
+import comparadores.OrdenarCompuesto;
+import comparadores.OrdenarDNI;
+import comparadores.OrdenarPorApellido;
+import comparadores.OrdenarPorNombre;
 
 import java.util.Comparator;
 import java.util.Iterator;
 
-import ListaVinculada.Comparadores.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		
+       
+      /*String a = new String("a");
+        String b = new String("e");
+        String c = new String("c");
+        String d = new String("e");
+        String e = new String("e");
+        String f = new String("f");
+        */
+     // Comparator<Object> compS1 = new ComparadorString();
+        
+        Alumno alumno1 = new Alumno("Luis","Rodriguez",1231);
+        Alumno alumno2 = new Alumno("Felipe","Carlos",1342);
+        Alumno alumno3 = new Alumno("Juan","Perez",412);
+        Alumno alumno4 = new Alumno("Jorge","Gomez",45555);
+        Alumno alumno5 = new Alumno("Martin","Diaz",41112);
+        Alumno alumno6 = new Alumno("Juan","Perez",423333);
+        Alumno alumno7 = new Alumno("Fernando","Lopez",12222);
 
-public class main {
-    public static void main(String[] args) {
-        // String a = new String("a");
-        // String b = new String("e");
-        // String c = new String("c");
-        // String d = new String("e");
-        // String e = new String("e");
-        // String f = new String("f");
+        Comparator<Object> apellido = new OrdenarPorApellido();
+        Comparator<Object> nombre = new OrdenarPorNombre();
+        Comparator<Object> dni = new OrdenarDNI();
+        Comparator<Object> compuesto = new OrdenarCompuesto(apellido,nombre);
+        Comparator<Object> compuesto1 = new OrdenarCompuesto(compuesto,dni);
 
-        Integer a = 1;
-        Integer b = 2;
-        Integer c = 3;
-        Integer d = 4;
-        Integer e = 5;
-        Integer f = 6;
+        ListaEnlazada lista = new ListaEnlazada(compuesto);
+   
+        lista.addNodo(alumno1);
+        lista.addNodo(alumno2);
+        lista.addNodo(alumno3);
+        lista.addNodo(alumno4);
+        lista.addNodo(alumno5);
+        lista.addNodo(alumno6);
+        lista.addNodo(alumno7);
+        //lista.addNodo(e);
+        //lista.addNodo(f);
+ 
+        
+        for(Nodo s: lista)
+        	System.out.println(s);
+        
 
+      //  lista.imprimir();
+        
+        
+        lista.eliminarOcurrencias(alumno6);
+        System.out.println("---------------------");
 
-        Nodo n1 = new Nodo(a);
-        Comparator<Object> compS1 = new ComparadorStringAsc();
-        Comparator<Object> compS2 = new ComparadorStringDesc();
-        Comparator<Object> compI1 = new ComparadorIntegerAsc();
-        Comparator<Object> compI2 = new ComparadorIntegerDesc();
-
-        ListaEnlazada lista = new ListaEnlazada(n1, compI2);
-        lista.addNodo(b);
-        lista.addNodo(c);
-        lista.addNodo(d);
-        lista.addNodo(e);
-        lista.addNodo(f);
-
-        Iterator<Nodo> it = lista.iterator();
-
-        while(it.hasNext()){
-            System.out.println(it.next().getElemento());
-        }
+        for(Nodo s: lista)
+        	System.out.println(s);
+        
+        
+      //  lista.imprimir();
     }
 }
