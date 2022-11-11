@@ -1,23 +1,11 @@
 package ListaVinculada;
+
 import java.util.Comparator;
 
 import ListaVinculada.Comparadores.*;
 
-
-public class Main {
-	
-	public static void main(String[] args) {
-		
-       
-      /*String a = new String("a");
-        String b = new String("e");
-        String c = new String("c");
-        String d = new String("e");
-        String e = new String("e");
-        String f = new String("f");
-        */
-     // Comparator<Object> compS1 = new ComparadorString();
-        
+public class test {
+    public static void main(String[] args) {
         Alumno alumno1 = new Alumno("Luis","Rodriguez",1231);
         Alumno alumno2 = new Alumno("Felipe","Carlos",1342);
         Alumno alumno3 = new Alumno("Juan","Perez",412);
@@ -60,5 +48,6 @@ public class Main {
         
         
       //  lista.imprimir();
+    
     }
 }
