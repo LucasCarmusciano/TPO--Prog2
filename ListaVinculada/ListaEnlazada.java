@@ -7,8 +7,8 @@ public class ListaEnlazada implements Iterable<Nodo>{
 
 	private Nodo cabeza;
 	private Nodo fin;
-    	private int size;
-    	private Comparator<Object> comparador;
+    private int size;
+    private Comparator<Object> comparador;
 
     public ListaEnlazada(Comparator<Object> comparador) {
         this.cabeza = null;
@@ -69,7 +69,6 @@ public class ListaEnlazada implements Iterable<Nodo>{
         int i = 0;
         while(aux!=null){
             if(aux.getElemento().equals(obj)){
-                System.out.println("pos "+i);
                 aux = aux.getSiguiente();
                 this.eliminar(i);
             }else{
