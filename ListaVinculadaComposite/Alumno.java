@@ -1,7 +1,7 @@
 package ListaVinculadaComposite;
 import java.util.ArrayList;
 
-public class Alumno extends Universidad{
+public class Alumno extends Entidad{
 	
 	private String nombre;
 	private String apellido;
@@ -40,7 +40,11 @@ public class Alumno extends Universidad{
 
 	@Override
 	public String toString() {
-		return nombre +" "+ apellido+"    DNI: "+dni;
+		String interes = "[ ";
+		for (int i = 0; i < intereses.size(); i++) {
+			interes += intereses.get(i)+" ";
+		}
+		return nombre +" "+ apellido+"    DNI: "+dni+"   "+interes+"]";
 	}
 
 
@@ -69,4 +73,10 @@ public class Alumno extends Universidad{
 	}
 
 
+	@Override
+    public ArrayList<Alumno> getAlumnos(){
+		ArrayList<Alumno> alumno = new ArrayList<>();
+		alumno.add(this);
+		return alumno;
+	}
 }
