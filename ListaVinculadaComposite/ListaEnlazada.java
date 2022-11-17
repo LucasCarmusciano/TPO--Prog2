@@ -79,16 +79,19 @@ public class ListaEnlazada implements Iterable<Nodo>{
     
     public int getPosicion(Object obj){
         Nodo aux = cabeza;
-        int i = 0;
-        while (!aux.getElemento().equals(obj)) {
-            aux = aux.getSiguiente();
-            i++;
-        }
-        return i;
+        for (int i = 0; i < this.size; i++) {
+            if(aux.getElemento().equals(obj)){
+                return i;
+            }else{
+                aux = aux.getSiguiente();
+            }
+        } 
+        return -1;
     }
     
     public void setComparador(Comparator<Object> comparador){
         this.comparador = comparador;
+        this.ordenar();
     }
     
     private void ordenar(){
