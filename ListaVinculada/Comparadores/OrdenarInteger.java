@@ -1,4 +1,4 @@
-package ListaVinculadaComposite.Comparadores;
+package ListaVinculada.Comparadores;
 
 import java.util.Comparator;
 

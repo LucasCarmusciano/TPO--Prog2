@@ -1,8 +1,8 @@
-package ListaVinculadaComposite.Comparadores;
+package ListaVinculada.Comparadores;
 
 import java.util.Comparator;
 
-import ListaVinculadaComposite.Entidad;
+import ListaVinculada.Entidad;
 
 public class OrdenarCantAlumnos implements Comparator<Object>{
  

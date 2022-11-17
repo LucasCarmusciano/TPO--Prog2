@@ -6,7 +6,6 @@ import java.util.Iterator;
 public class ListaEnlazada implements Iterable<Nodo>{
 
 	private Nodo cabeza;
-	private Nodo fin;
     private int size;
     private Comparator<Object> comparador;
 
@@ -28,8 +27,8 @@ public class ListaEnlazada implements Iterable<Nodo>{
 		}
 		else {
 			temp = new Nodo(o);
-			this.fin.setSiguiente(temp);
-			fin = temp;
+			temp.setSiguiente(this.cabeza);
+			this.cabeza = temp;
 			this.ordenar();
 		}
 		this.size++;
@@ -80,16 +79,19 @@ public class ListaEnlazada implements Iterable<Nodo>{
     
     public int getPosicion(Object obj){
         Nodo aux = cabeza;
-        int i = 0;
-        while (!aux.getElemento().equals(obj)) {
-            aux = aux.getSiguiente();
-            i++;
-        }
-        return i;
+        for (int i = 0; i < this.size; i++) {
+            if(aux.getElemento().equals(obj)){
+                return i;
+            }else{
+                aux = aux.getSiguiente();
+            }
+        } 
+        return -1;
     }
     
     public void setComparador(Comparator<Object> comparador){
         this.comparador = comparador;
+        this.ordenar();
     }
     
     private void ordenar(){

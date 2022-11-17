@@ -1,4 +1,4 @@
-package ListaVinculadaComposite;
+package ListaVinculada;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,7 @@
 package ListaVinculada.Comparadores;
-import ListaVinculada.Alumno;
 import java.util.Comparator;
+
+import ListaVinculada.Alumno;
 
 
 

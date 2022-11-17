@@ -6,9 +6,7 @@ import ListaVinculada.Alumno;
 
 public class OrdenarDescendente implements Comparator<Object>{
 
-    private Comparator<Object> c;
-    private Alumno a1,a2;
-    
+    private Comparator<Object> c;    
         
     public OrdenarDescendente(Comparator<Object> c) {
         this.c = c;
@@ -16,8 +14,6 @@ public class OrdenarDescendente implements Comparator<Object>{
 
     @Override
     public int compare(Object o1, Object o2) {
-        this.a1=(Alumno) o1;
-        this.a2=(Alumno) o2;
-        return ((-1)*(c.compare(a1, a2)));
+        return ((-1)*(c.compare(o1, o2)));
     }
 }
