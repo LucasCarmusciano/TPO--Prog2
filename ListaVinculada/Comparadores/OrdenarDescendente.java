@@ -2,8 +2,6 @@ package ListaVinculada.Comparadores;
 
 import java.util.Comparator;
 
-import ListaVinculada.Alumno;
-
 public class OrdenarDescendente implements Comparator<Object>{
 
     private Comparator<Object> c;    
