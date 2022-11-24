@@ -14,24 +14,54 @@ public class ListaEnlazada implements Iterable<Nodo>{
         this.size = 0;
         this.comparador = comparador;
     }
-
-    public Nodo getCabeza() {
-        return cabeza;
+    
+    
+    private void ordenar(){
+        Nodo aux = this.cabeza;
+        Nodo actual;
+        Object temp;
+        while(aux.getSiguiente()!=null){
+            actual = aux.getSiguiente();
+            while(actual!=null){
+                if((this.comparador.compare(aux.getElemento(), actual.getElemento()))>=0){
+                    temp = aux.getElemento();
+                    aux.setElemento(actual.getElemento());
+                    actual.setElemento(temp);
+                }
+                actual = actual.getSiguiente();
+            }
+            aux = aux.getSiguiente();
+        }
     }
     
     public void addNodo(Object o){
-    	Nodo temp;
+    	Nodo nodo = new Nodo(o);
+        Nodo aux;
+        Nodo siguiente;
+
 		if(estaVacia()) {
-			temp = new Nodo(o);
-			this.cabeza = temp;
-		}
-		else {
-			temp = new Nodo(o);
-			temp.setSiguiente(this.cabeza);
-			this.cabeza = temp;
-			this.ordenar();
-		}
-		this.size++;
+			this.cabeza = nodo;
+		} else {
+            aux = this.cabeza;
+            while(aux != null){
+                siguiente = aux.getSiguiente();
+                if((this.comparador.compare(aux.getElemento(), nodo.getElemento()))>=0){
+                    nodo.setSiguiente(aux);
+                    this.cabeza = nodo;
+                    break;
+                }else if ((this.comparador.compare(aux.getElemento(), nodo.getElemento()))<=0 && siguiente == null) {
+                    aux.setSiguiente(nodo);
+                    break;
+                }else if ((this.comparador.compare(aux.getElemento(), nodo.getElemento()))<0 && 
+                        (this.comparador.compare(siguiente.getElemento(), nodo.getElemento()))>=0) {
+                    aux.setSiguiente(nodo);
+                    nodo.setSiguiente(siguiente);
+                    break;
+                }else {
+                    aux = aux.getSiguiente();
+                }
+            }
+        }
     }
 
 	public boolean estaVacia() { 
@@ -92,24 +122,6 @@ public class ListaEnlazada implements Iterable<Nodo>{
     public void setComparador(Comparator<Object> comparador){
         this.comparador = comparador;
         this.ordenar();
-    }
-    
-    private void ordenar(){
-        Nodo aux = this.cabeza;
-        Nodo actual;
-        Object temp;
-        while(aux.getSiguiente()!=null){
-            actual = aux.getSiguiente();
-            while(actual!=null){
-                if((this.comparador.compare(aux.getElemento(), actual.getElemento()))>=0){
-                    temp = aux.getElemento();
-                    aux.setElemento(actual.getElemento());
-                    actual.setElemento(temp);
-                }
-                actual = actual.getSiguiente();
-            }
-            aux = aux.getSiguiente();
-        }
     }
     
     public void imprimir(){
