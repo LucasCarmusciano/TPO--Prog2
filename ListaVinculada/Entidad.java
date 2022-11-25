@@ -1,10 +1,16 @@
 package ListaVinculada;
 
-import java.util.ArrayList;
-
 public abstract class Entidad {
-    public abstract ArrayList<Alumno> getAlumnos();
-    public int getCantidadAlumnos(){
-        return this.getAlumnos().size();
+    private String nombre;
+    public Entidad(String nombre) {
+        this.nombre = nombre;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public abstract int getCantidadAlumnos();
 }

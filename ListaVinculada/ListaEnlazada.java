@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 
-public class ListaEnlazada implements Iterable<Nodo>{
+public class ListaEnlazada implements Iterable<Object>{
 
 	private Nodo cabeza;
     private int size;
@@ -33,7 +33,7 @@ public class ListaEnlazada implements Iterable<Nodo>{
             aux = aux.getSiguiente();
         }
     }
-    
+
     public void addNodo(Object o){
     	Nodo nodo = new Nodo(o);
         Nodo aux;
@@ -62,6 +62,7 @@ public class ListaEnlazada implements Iterable<Nodo>{
                 }
             }
         }
+        this.size++;
     }
 
 	public boolean estaVacia() { 
@@ -95,17 +96,17 @@ public class ListaEnlazada implements Iterable<Nodo>{
     
     public void eliminarOcurrencias(Object obj){
         Nodo aux = cabeza;
-        int i = 0;
+        Nodo siguiente;
         while(aux!=null){
-            if(aux.getElemento().equals(obj)){
-                aux = aux.getSiguiente();
-                this.eliminar(i);
-            }else{
-                aux = aux.getSiguiente();
-                i++;
+            siguiente = aux.getSiguiente();
+            if(aux.getElemento().equals(obj) && aux == this.cabeza){
+                this.cabeza = this.cabeza.getSiguiente();
+            }else if (siguiente!=null && siguiente.getElemento().equals(obj)) {
+                aux.setSiguiente(siguiente.getSiguiente());
             }
-        }      
-    }
+            aux = aux.getSiguiente();
+        }
+    }      
     
     public int getPosicion(Object obj){
         Nodo aux = cabeza;
@@ -124,38 +125,28 @@ public class ListaEnlazada implements Iterable<Nodo>{
         this.ordenar();
     }
     
-    public void imprimir(){
-        Nodo aux = this.cabeza;
-        System.out.println(aux.getElemento());
-        while (aux.getSiguiente()!=null){
-            aux = aux.getSiguiente();
-            System.out.println(aux.getElemento());
-        }
-    }
-
-    
     @Override
-    public Iterator<Nodo> iterator() {
-        return new Iterador();
+    public Iterator<Object> iterator() {
+        return new Iterador(this.cabeza);
     }
 
-    private class Iterador implements Iterator<Nodo>{
+    private class Iterador implements Iterator<Object>{
         private Nodo pos;
         
-        public Iterador(){
-            this.pos = new Nodo(null);
-            this.pos.setSiguiente(cabeza);
+        public Iterador(Nodo first){
+            this.pos = first;
         }
 
         @Override
         public boolean hasNext() {
-            return (pos.getSiguiente()!=null);
+            return (pos!=null);
         }
 
         @Override
-        public Nodo next() {
+        public Object next() {
+            Object obj = pos.getElemento();
             pos = pos.getSiguiente();
-            return pos;
+            return obj;
         }
 }
 }

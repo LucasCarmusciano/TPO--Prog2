@@ -3,14 +3,13 @@ import java.util.ArrayList;
 
 public class Alumno extends Entidad{
 	
-	private String nombre;
 	private String apellido;
 	private int dni;
 	private ArrayList<String> intereses;
 	
 	
 	public Alumno(String nombre, String apellido, int dni) {
-		this.nombre = nombre;
+		super(nombre);
 		this.apellido = apellido;
 		this.dni = dni;
 		this.intereses = new ArrayList<>();
@@ -27,12 +26,6 @@ public class Alumno extends Entidad{
 		return apellido;
 	}
 
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
@@ -44,19 +37,13 @@ public class Alumno extends Entidad{
 		for (int i = 0; i < intereses.size(); i++) {
 			interes += intereses.get(i)+" ";
 		}
-		return nombre +" "+ apellido+"    DNI: "+dni+"   "+interes+"]";
+		return this.getNombre() +" "+ apellido+"    DNI: "+dni+"   "+interes+"]";
 	}
 
 
 	public int getDni() {
 		// TODO Auto-generated method stub
 		return dni;
-	}
-
-
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return nombre;
 	}
 
 	
@@ -74,9 +61,7 @@ public class Alumno extends Entidad{
 
 
 	@Override
-    public ArrayList<Alumno> getAlumnos(){
-		ArrayList<Alumno> alumno = new ArrayList<>();
-		alumno.add(this);
-		return alumno;
+    public int getCantidadAlumnos(){
+		return 1;
 	}
 }

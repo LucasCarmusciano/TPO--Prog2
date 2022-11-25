@@ -25,7 +25,7 @@ public class test {
 
         // PUNTO (b)
 
-        for(Nodo s: listaA){
+        for(Object s: listaA){
         	System.out.println(s);
         }
         System.out.println("-----------------------");
@@ -37,7 +37,7 @@ public class test {
         listaA.eliminar(0);
         listaA.eliminarOcurrencias(5);
         listaA.eliminarOcurrencias(11);
-        for(Nodo s: listaA){
+        for(Object s: listaA){
         	System.out.println(s);
         }
         System.out.println("-----------------------");
@@ -60,7 +60,7 @@ public class test {
 
         // PUNTO (e)
 
-        for(Nodo s: listaD){
+        for(Object s: listaD){
         	System.out.println(s);
         }
         System.out.println("-----------------------");
@@ -85,7 +85,7 @@ public class test {
 
         Comparator<Object> stringsDesc = new OrdenarDescendente(strings);
         listaD.setComparador(stringsDesc);
-        for(Nodo s: listaD){
+        for(Object s: listaD){
         	System.out.println(s);
         }
         System.out.println("-----------------------");
@@ -95,10 +95,10 @@ public class test {
         System.out.println("-----------I-----------");
 
         // Creacion de la primera estructura.
-        Grupo unicen = new Grupo();
-        Grupo exactas = new Grupo();
-        Grupo humanas = new Grupo();
-        Grupo historia = new Grupo();
+        Grupo unicen = new Grupo("unicen");
+        Grupo exactas = new Grupo("exactas");
+        Grupo humanas = new Grupo("humanas");
+        Grupo historia = new Grupo("historia");
         Alumno a1 = new Alumno("John", "Doe", 1200000);
         a1.agregarintereses("intercambio");
         Alumno a2 = new Alumno("Federico", "Gomez", 35999888);
@@ -135,9 +135,9 @@ public class test {
         unicen.addEntidad(a1);
         
         // Creacion de la segunda estructura.
-        Grupo OlimpiadasMatematicas = new Grupo();
-        Grupo Matea2 = new Grupo();
-        Grupo LosFibo = new Grupo();
+        Grupo OlimpiadasMatematicas = new Grupo("OlimpiadasMatematicas");
+        Grupo Matea2 = new Grupo("Matea2");
+        Grupo LosFibo = new Grupo("LosFibo");
         Alumno m1 = new Alumno("Juan", "Juarez", 33222444);
         m1.agregarintereses("sucesiones");
         m1.agregarintereses("algebra");
@@ -167,7 +167,7 @@ public class test {
         listaCompuesta.addNodo(OlimpiadasMatematicas);
         
         // Obtengo los valores de la lista compuesta.
-        for(Nodo s: listaCompuesta)
+        for(Object s: listaCompuesta)
         System.out.println(s);
         System.out.println("-----------------------");
 
